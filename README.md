@@ -6,7 +6,7 @@ Let's learn what is webpack and the basic of it.
 1. Install webpack global
 
   ```js
-  npm i webpack -g
+  npm i -D webpack webpack-cli && npm i -D webpack webpack-cli
   ```
 
 2. create a package json file
@@ -295,24 +295,43 @@ optional
 
 ```js
 // 1
-plugins: [
-  new webpack.optimize.CommonsChunkPlugin({
-    name: 'vendor' // Specify the common bundle's name.
-  }),
-]
+optimization: {
+    splitChunks: {
+        cacheGroups: {
+            default: false,
+            commons: {
+                test: /[\\/]node_modules[\\/]/,
+                name: "vendor",
+                chunks: "all"
+            }
+        }
+    }
+},
 
 // 2
-plugins: [
-  new webpack.optimize.CommonsChunkPlugin({
-    names: ['vendor', 'manifest'] // Extract the webpack bootstrap logic into manifest.js
-  }),
-]
+optimization: {
+    splitChunks: {
+        cacheGroups: {
+            default: false,
+            commons: {
+                test: /[\\/]node_modules[\\/]/,
+                name: "vendor",
+                chunks: "all"
+            }
+        }
+    },
+    runtimeChunk: {
+        name: 'manifest',
+    }
+},
 
 // 3
-new ManifestPlugin({
-  fileName: 'manifest.json',
-  basePath: './dist/'
-})
+plugins: [
+    new ManifestPlugin({
+        fileName: 'manifest.json',
+        basePath: './dist/'
+    })
+]
 ```
 
 #### Example 3 - Webpack Resolve & Plugins
