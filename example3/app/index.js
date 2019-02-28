@@ -7,4 +7,4 @@
 // console.log("loaded jQuery version is " + $.fn.jquery);
 
 // #3 - Using Provide Plugin
-// console.log("loaded jQuery version is " + $.fn.jquery);
+console.log("loaded jQuery version is " + $.fn.jquery);
