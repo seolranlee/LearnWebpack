@@ -8,14 +8,15 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
 
+
   // #2 - Using alias
   // resolve: {
-  //   alias: {
-  //     Vendor: path.resolve(__dirname, './app/vendor/')
-  //   }
-  // }
+//   alias: {
+//     Vendor: path.resolve(__dirname, './app/vendor/')
+//   }
+// }
 
-  // #3 - Provide Plugin
+// #3 - Provide Plugin
   plugins: [
     new webpack.ProvidePlugin({
       $: 'jquery'
